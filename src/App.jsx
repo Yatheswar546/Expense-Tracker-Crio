@@ -49,18 +49,22 @@ function App() {
   };
 
   return (
-    <div className='container'>
+    <div className='app'>
       <h1>Expense Tracker</h1>
 
-      <Balance 
-        balance={balance}
-        setShowIncomeModal={setShowIncomeModal}
-        setShowExpenseModal={setShowExpenseModal}
-      />
+      <div className='top-section'>
+        <Balance 
+          balance={balance}
+          setShowIncomeModal={setShowIncomeModal}
+          setShowExpenseModal={setShowExpenseModal}
+        />
 
-      <Charts expenses={expenses} />
+        <Charts expenses={expenses} />
+      </div>
 
-      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
+      <div className='bottom-section'>
+        <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
+      </div>
 
       {showIncomeModal && (
         <AddBalanceModal 

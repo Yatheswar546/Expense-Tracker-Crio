@@ -1,19 +1,17 @@
-function ExpenseList({ expenses, deleteExpense }) {
-    if (expenses.length === 0) {
-        return <p>No transactions</p>;
-    }
+import ExpenseItem from "./ExpenseItem";
 
+function ExpenseList({ expenses, deleteExpense }) {
     return (
-        <div>
+        <div className="list">
             <h2>Recent Transactions</h2>
 
-            {expenses.map((e) => (
-                <div key={e.id}>
-                    <p>{e.title}</p>
-                    <p>₹{e.price}</p>
-                    <button onClick={() => deleteExpense(e.id)}>Delete</button>
-                </div>
-            ))}
+            {expenses.length === 0 ? (
+                <p>No transactions</p>
+            ) : (
+              expenses.map((e) => (
+                <ExpenseItem key={e.id} expense={e} deleteExpense={deleteExpense} />
+                ))
+            )}
         </div>
     );
 }
